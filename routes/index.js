@@ -108,17 +108,15 @@ exports.logout = function(req, res){
     return res.redirect('/');
 };
 
-//webhook
+
+
 exports.webhook = function(req, res){
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+     res.render( 'webhook', {
 
-    res.render( 'webhook', {
-
-        webStr : bot.parser(),
-        layout:false
-    });
-
+         webStr : bot.parser(),
+    layout:false
+});
 
 
 };
-
-
