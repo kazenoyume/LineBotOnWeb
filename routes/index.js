@@ -24,7 +24,36 @@ let bot = linebot({
     channelAccessToken:'PMYTOjEFFN7ZnBSMDdKUmtgkjod7Xkukm4g2LNyFGB7q6FsPFym2zhiUsN7GWbb5DkJEV1nPsOqmvZ81MaUTUdokXu0pxd/ZM9Vt5nxGdghJkveeo2MfWR7mhY6EuSfMv94qG6rZmkDPLn2Cz+ik1QdB04t89/1O/w1cDnyilFU='
 });
 
+bot.on('message', function (event) {
+    // 把收到訊息的 event 印出來
+    var msg = "groupId:" + event.source.groupId + "  userId:" + event.source.userId + " text:" + event.message.text;
 
+    console.log(msg);      // your JSON
+    if (event.message.type = 'text') {
+        var msg = event.message.text;
+        event.reply(msg).then(function(data) {
+            // success
+            console.log(msg);
+        }).catch(function(error) {
+            // error
+            console.log('error');
+        });
+    }
+    if (event.message.text === 'now') {
+        event.reply(msg).then(function(data) {
+            // success.
+            //ps4(1);
+            //baha(1);
+            console.log(msg);
+        }).catch(function(error) {
+            // error
+            console.log('error');
+        });
+    }
+
+
+    console.log(msg);
+});
 
 
 
@@ -115,35 +144,7 @@ exports.logout = function(req, res){
 exports.webhook = function(req, res){
     var lineParsert=bot.parser();
 
-    bot.on('message', function (event) {
-        // 把收到訊息的 event 印出來
-        var msg = "groupId:" + event.source.groupId + "  userId:" + event.source.userId + " text:" + event.message.text;
 
-        if (event.message.type = 'text') {
-            var msg = event.message.text;
-            event.reply(msg).then(function(data) {
-                // success
-                console.log(msg);
-            }).catch(function(error) {
-                // error
-                console.log('error');
-            });
-        }
-        if (event.message.text === 'now') {
-            event.reply(msg).then(function(data) {
-                // success.
-                //ps4(1);
-                //baha(1);
-                console.log(msg);
-            }).catch(function(error) {
-                // error
-                console.log('error');
-            });
-        }
-
-
-        console.log(msg);
-    });
 
     console.log(req.body);      // your JSON
     console.log("1");
