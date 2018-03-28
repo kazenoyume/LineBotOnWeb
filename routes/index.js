@@ -112,7 +112,7 @@ exports.logout = function(req, res){
 
 exports.webhook = function(req, res){
 
-    bot.parse(req.body);
+  //  bot.parse(req.body);
     console.log(req.body);      // your JSON
    console.log("1");
     res.send(req.body);    // echo the result back
