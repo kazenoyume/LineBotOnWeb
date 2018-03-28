@@ -9,7 +9,6 @@ var postList = [
 
 ];
 var count = postList.length;
-
 var isLogin = false;
 var checkLoginStatus = function(req, res){
     isLogin = false;
@@ -30,7 +29,6 @@ var bot = linebot({
 
 exports.index = function(req, res){
     checkLoginStatus(req, res);
-
     var custList =custa.query(924195, function(err,results) {
         console.log("out"+results[0].cust_no); // or whatever you need to do with the results
     });
@@ -111,21 +109,18 @@ exports.logout = function(req, res){
 
 
 exports.webhook = function(req, res){
-    var event=req.body;
 
-    if (event.message.type = 'text') {
-        var msg = event.message.text;
-        event.reply(msg).then(function(data) {
-            // success
-            console.log(msg);
-        }).catch(function(error) {
-            // error
-            console.log('error');
-        });
-    }
+    bot.parse(event);
     console.log(req.body);      // your JSON
     console.log("1");
     res.send(req.body);    // echo the result back
 };
 
+bot.on('message', function (event) {
+    event.reply(event.message.text).then(function (data) {
+        console.log('Success', data);
+    }).catch(function (error) {
+        console.log('Error', error);
+    });
+});
 
