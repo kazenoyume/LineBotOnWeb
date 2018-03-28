@@ -42,7 +42,7 @@ bot.on('message', function (event) {
         event.reply(msg).then(function(data) {
             // success.
             //ps4(1);
-            baha(1);
+            //baha(1);
             console.log(msg);
         }).catch(function(error) {
             // error
@@ -142,12 +142,11 @@ exports.logout = function(req, res){
 
 
 exports.webhook = function(req, res){
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-     res.render( 'webhook', {
-
-         webStr : bot.parser(),
-    layout:false
-});
-
-
+    var a=bot.parser();
+    console.log(req.body);      // your JSON
+    console.log("1");
+    res.send(reg.body);    // echo the result back
 };
+
+
+
