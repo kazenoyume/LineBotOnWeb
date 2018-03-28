@@ -145,7 +145,7 @@ exports.webhook = function(req, res){
     var a=bot.parser();
     console.log(req.body);      // your JSON
     console.log("1");
-    res.send(reg.body);    // echo the result back
+    res.send(req.body);    // echo the result back
 };
 
 
