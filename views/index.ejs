@@ -14,9 +14,21 @@
     });
 
 </script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font: 13px Helvetica, Arial; }
 
 
-<% if (!loginStatus) { %>
+    #row{
+        height: 300px;
+ width: 960px;
+        background-color: #eeeeee;
+
+    }
+</style>
+
+
+
 <div class="hero-unit">
   <h1>Line訊息連結系統</h1>
   <p>Line訊息連結系統 是一個基於 Node.js 的練習小功能。</p>
@@ -25,35 +37,23 @@
     <a class="btn btn-large" href="/reg">立即註冊</a>-->
 
   </p>
+
 </div>
-<% } else { %>
 <form method="post" action="/post" class="well form-inline center" style="text-align:center;">
-  <input type="text" class="span8" name="post">
-  <button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>發言</button>
+    <input type="text" class="span8" name="post">
+    <button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>發言</button>
 </form>
-<% } %>
-<div id="date"></div>
-<div class="row">
-    <div class="span4">
+
+
+
+
+<div class="row" >
+    <div class="span4" id="row">
         <h2><a>隨</a> 說</h2>
-        <p v id="message"></p>
+        <p  id="message"></p>
     </div>
 </div>
-<!--<% posts.forEach(function(post, index) {
-if (index % 3 == 0) { %>
-      <div class="row">
-          <%} %>
-        <div class="span4">
-          <h2><a href="/u/<%= post.name %>"><%= post.name %></a> 說</h2>
-          <p><%= post.msg %></p>
-        </div>
-      <% if (index % 3 == 2) { %>
-      </div>
-      <% } %>
-<%}) %>
-<% if (posts.length % 3 != 0) { %>
-</div>
-<%} %>-->
+
 
 <% include layout2.ejs %>
 
