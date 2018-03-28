@@ -31,7 +31,7 @@ app.get('/login', router.login);
 app.post('/login', router.btn_login);
 app.get('/reg', router.reg);
 app.post('/reg', router.btn_reg);
-app.all('/webhook', router.webhook());
+app.all('/webhook', router.webhook);
 
 
 

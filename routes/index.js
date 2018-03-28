@@ -1,5 +1,7 @@
 var custa=require('../modules/custQuery.js');
+
 var linebot = require('linebot');
+
 var postList = [
     { id: 1, name: "Apple", msg: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the gre‬" },
     { id: 2, name: "Zoe", msg: "The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymph. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta." },
@@ -112,7 +114,7 @@ exports.webhook = function(req, res){
 
     bot.parse(req.body);
     console.log(req.body);      // your JSON
-    console.log("1");
+   console.log("1");
     res.send(req.body);    // echo the result back
 };
 
