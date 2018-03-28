@@ -34,7 +34,7 @@ var bot = linebot({
 
 exports.index = function(req, res){
     checkLoginStatus(req, res);
-    var custList =custa.query(924195, function(err,results) {
+   /* var custList =custa.query(924195, function(err,results) {
         console.log("out"+results[0].cust_no); // or whatever you need to do with the results
     });
 
@@ -42,7 +42,7 @@ exports.index = function(req, res){
         console.log("out"+res[0].cust_no);
     }).catch(function(e) {
         console.log(e);
-    });
+    });*/
 
 
     res.render( 'index', {
