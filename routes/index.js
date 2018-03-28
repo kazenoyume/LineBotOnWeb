@@ -1,6 +1,8 @@
 var custa=require('../modules/custQuery.js');
 
 var linebot = require('linebot');
+var port = require('../bin/www');
+
 
 var postList = [
     { id: 1, name: "Apple", msg: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the gre‬" },
@@ -103,6 +105,7 @@ exports.btn_login = function(req, res){
 
 //執行登出
 exports.logout = function(req, res){
+
     res.clearCookie('userid', { path: '/' });
     res.clearCookie('password', { path: '/' });
     return res.redirect('/');
@@ -112,10 +115,6 @@ exports.logout = function(req, res){
 
 exports.webhook = function(req, res){
 
-
-    //  if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
-    //   return res.sendStatus(400);
-    // }
     bot.parse(req.body);
 
 
@@ -123,10 +122,21 @@ exports.webhook = function(req, res){
 };
 
 bot.on('message', function (event) {
-    event.reply(event.message.text).then(function (data) {
+
+    var socket = require('socket.io-client')('http://localhost:'+port.port_set);
+    socket.on('connect', function(){
+        console.log('[%s]on connect...', socket.id);
+    });
+    socket.emit('message', {
+        msg: event.message.text
+    });
+    socket.on('disconnect', function(){
+        console.log('[%s]on disconnect....', socket.id);
+    });
+    /*event.reply(event.message.text).then(function (data) {
         console.log('Success', data);
     }).catch(function (error) {
         console.log('Error', error);
-    });
+    });*/
 });
 

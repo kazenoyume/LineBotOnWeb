@@ -1,19 +1,28 @@
+<% include layout.ejs %>
+
+
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io.connect();
     socket.on('date', function(data) {
         $('#date').text(data.date);
+
     });
+    socket.on('message', function(data) {
+
+        $('#message').append(data.msg+'<br>');
+    });
+
 </script>
 
 
 <% if (!loginStatus) { %>
 <div class="hero-unit">
-  <h1>歡迎來到 Microblog</h1>
-  <p>Microblog 是一個基於 Node.js 的微博系统。</p>
+  <h1>Line訊息連結系統</h1>
+  <p>Line訊息連結系統 是一個基於 Node.js 的練習小功能。</p>
   <p>
-    <a class="btn btn-primary btn-large" href="/login">登入</a>
-    <a class="btn btn-large" href="/reg">立即註冊</a>
+    <!--<a class="btn btn-primary btn-large" href="/login">登入</a>
+    <a class="btn btn-large" href="/reg">立即註冊</a>-->
 
   </p>
 </div>
@@ -24,7 +33,13 @@
 </form>
 <% } %>
 <div id="date"></div>
-<% posts.forEach(function(post, index) {
+<div class="row">
+    <div class="span4">
+        <h2><a>隨</a> 說</h2>
+        <p v id="message"></p>
+    </div>
+</div>
+<!--<% posts.forEach(function(post, index) {
 if (index % 3 == 0) { %>
       <div class="row">
           <%} %>
@@ -38,4 +53,7 @@ if (index % 3 == 0) { %>
 <%}) %>
 <% if (posts.length % 3 != 0) { %>
 </div>
-<%} %>
+<%} %>-->
+
+<% include layout2.ejs %>
+
