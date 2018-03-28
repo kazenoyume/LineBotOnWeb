@@ -23,7 +23,7 @@ let bot = linebot({
     channelSecret: '455f74dac591d18ede2d996eb202f440',
     channelAccessToken:'PMYTOjEFFN7ZnBSMDdKUmtgkjod7Xkukm4g2LNyFGB7q6FsPFym2zhiUsN7GWbb5DkJEV1nPsOqmvZ81MaUTUdokXu0pxd/ZM9Vt5nxGdghJkveeo2MfWR7mhY6EuSfMv94qG6rZmkDPLn2Cz+ik1QdB04t89/1O/w1cDnyilFU='
 });
-
+/*
 bot.on('message', function (event) {
     // 把收到訊息的 event 印出來
     var msg = "groupId:" + event.source.groupId + "  userId:" + event.source.userId + " text:" + event.message.text;
@@ -54,7 +54,7 @@ bot.on('message', function (event) {
 
     console.log(msg);
 });
-
+*/
 
 
 //首頁
