@@ -18,7 +18,7 @@ var checkLoginStatus = function(req, res){
     }
 };
 //我的LINE
-let bot = linebot({
+var bot = linebot({
     channelId: '1522300741',
     channelSecret: '455f74dac591d18ede2d996eb202f440',
     channelAccessToken:'PMYTOjEFFN7ZnBSMDdKUmtgkjod7Xkukm4g2LNyFGB7q6FsPFym2zhiUsN7GWbb5DkJEV1nPsOqmvZ81MaUTUdokXu0pxd/ZM9Vt5nxGdghJkveeo2MfWR7mhY6EuSfMv94qG6rZmkDPLn2Cz+ik1QdB04t89/1O/w1cDnyilFU='
@@ -146,6 +146,18 @@ exports.webhook = function(req, res){
 
 
 
+    var event=req.body;
+    
+    if (event.message.type = 'text') {
+        var msg = event.message.text;
+        event.reply(msg).then(function(data) {
+            // success
+            console.log(msg);
+        }).catch(function(error) {
+            // error
+            console.log('error');
+        });
+    }
     console.log(req.body);      // your JSON
     console.log("1");
     res.send(req.body);    // echo the result back
