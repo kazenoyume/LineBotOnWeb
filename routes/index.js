@@ -113,7 +113,38 @@ exports.logout = function(req, res){
 
 
 exports.webhook = function(req, res){
-    var a=bot.parser();
+    var lineParsert=bot.parser();
+
+    bot.on('message', function (event) {
+        // 把收到訊息的 event 印出來
+        var msg = "groupId:" + event.source.groupId + "  userId:" + event.source.userId + " text:" + event.message.text;
+
+        if (event.message.type = 'text') {
+            var msg = event.message.text;
+            event.reply(msg).then(function(data) {
+                // success
+                console.log(msg);
+            }).catch(function(error) {
+                // error
+                console.log('error');
+            });
+        }
+        if (event.message.text === 'now') {
+            event.reply(msg).then(function(data) {
+                // success.
+                //ps4(1);
+                //baha(1);
+                console.log(msg);
+            }).catch(function(error) {
+                // error
+                console.log('error');
+            });
+        }
+
+
+        console.log(msg);
+    });
+
     console.log(req.body);      // your JSON
     console.log("1");
     res.send(req.body);    // echo the result back

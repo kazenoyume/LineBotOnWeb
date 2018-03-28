@@ -32,15 +32,6 @@ app.get('/reg', router.reg);
 app.post('/reg', router.btn_reg);
 app.all('/webhook', router.webhook);
 
-app.all('/webhook', function(request, response){
-    console.log(request.body);      // your JSON
-    console.log("1");
-    response.send(request.body);    // echo the result back
-});
-
-app.post('/webhook2', function (req, res) {
-    res.send('GET request to the homepage');
-});
 
 
 // catch 404 and forward to error handler
