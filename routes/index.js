@@ -142,12 +142,12 @@ exports.logout = function(req, res){
 
 
 exports.webhook = function(req, res){
-    var lineParsert=bot.parser();
+
 
 
 
     var event=req.body;
-    
+
     if (event.message.type = 'text') {
         var msg = event.message.text;
         event.reply(msg).then(function(data) {
