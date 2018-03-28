@@ -15,23 +15,29 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(partials());
 app.use(logger('dev'));
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+//app.use(bodyParser.json()); // support json encoded bodies
+//app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser('19900518'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+const parser = bodyParser.json({
+    verify: function (req, res, buf, encoding) {
+        req.rawBody = buf.toString(encoding);
+    }
+});
 app.all('/', router.index);
 app.get('/logout', router.logout);
 app.get('/login', router.login);
 app.post('/login', router.btn_login);
 app.get('/reg', router.reg);
 app.post('/reg', router.btn_reg);
-app.all('/webhook', router.webhook);
+app.all('/webhook',parser, router.webhook);
+
+
 
 
 

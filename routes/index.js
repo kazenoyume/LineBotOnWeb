@@ -112,10 +112,14 @@ exports.logout = function(req, res){
 
 exports.webhook = function(req, res){
 
-  //  bot.parse(req.body);
-    console.log(req.body);      // your JSON
-   console.log("1");
-    res.send(req.body);    // echo the result back
+
+    //  if (!bot.verify(req.rawBody, req.get('X-Line-Signature'))) {
+    //   return res.sendStatus(400);
+    // }
+    bot.parse(req.body);
+
+
+    res.send(res.body);    // echo the result back
 };
 
 bot.on('message', function (event) {
