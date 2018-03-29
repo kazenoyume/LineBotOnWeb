@@ -130,6 +130,7 @@ exports.webhook = function(req, res){
 
 bot.on('message', function (event) {
     var userName;
+    console.log(event.source.userId);
     if( typeof(myMap[event.source.userId]) =='undefined'){
         userName='陌生人';
     }else{
