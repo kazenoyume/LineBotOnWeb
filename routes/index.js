@@ -126,8 +126,10 @@ exports.webhook = function(req, res){
 
 bot.on('message', function (event) {
     var myMap = new Map();
-    myMap.set("Uaa0637612b1059d6b2d584a2b5bd2889","隨");
+    myMap.set('Uaa0637612b1059d6b2d584a2b5bd2889','隨');
+
     var userName;
+    console.log("'"+ myMap['Uaa0637612b1059d6b2d584a2b5bd2889']+"'");
     console.log("'"+event.source.userId+"'");
     console.log("'"+  typeof(event.source.userId)+"'");
     console.log("'"+ myMap[event.source.userId]+"'");
