@@ -2,8 +2,7 @@ var custa=require('../modules/custQuery.js');
 
 var linebot = require('linebot');
 var port = require('../bin/www');
-var myMap = new Map();
-myMap.set("Uaa0637612b1059d6b2d584a2b5bd2889","隨");
+
 
 
 var postList = [
@@ -128,12 +127,14 @@ exports.webhook = function(req, res){
 
 
 bot.on('message', function (event) {
+    var myMap = new Map();
+    myMap.set("Uaa0637612b1059d6b2d584a2b5bd2889","隨");
     var userName;
     console.log("'"+event.source.userId+"'");
-    if( typeof(myMap[event.source.userId].trim()) =='undefined'){
+    if( typeof(myMap[event.source.userId]) =='undefined'){
         userName='陌生人';
     }else{
-        userName=myMap[event.source.userId.trim()];
+        userName=myMap[event.source.userId];
     }
 
 
