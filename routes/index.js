@@ -2,7 +2,8 @@ var custa=require('../modules/custQuery.js');
 
 var linebot = require('linebot');
 var port = require('../bin/www');
-
+var myMap = new Map();
+myMap.set("Uaa0637612b1059d6b2d584a2b5bd2889","隨");
 
 
 var postList = [
@@ -43,6 +44,10 @@ exports.index = function(req, res){
     }).catch(function(e) {
         console.log(e);
     });*/
+   if(typeof(myMap.get("test")) =='undefined'){
+
+       console.log('myMap.get("test")undefined');
+   }
 
 
     res.render( 'index', {
@@ -122,7 +127,15 @@ exports.webhook = function(req, res){
     res.send(res.body);    // echo the result back
 };
 
+
 bot.on('message', function (event) {
+    var userName;
+    if( typeof(myMap[event.source.userId]) =='undefined'){
+        userName='陌生人';
+    }else{
+        userName=myMap[event.source.userId];
+    }
+
 
     var socket = require('socket.io-client')('http://localhost:'+port.port_set);
     socket.on('connect', function(){
@@ -130,7 +143,7 @@ bot.on('message', function (event) {
     });
     socket.emit('message', {
         msg: event.message.text,
-        id:event.source.userId
+        id:userName
     });
     socket.on('disconnect', function(){
         console.log('[%s]on disconnect....', socket.id);
