@@ -44,10 +44,9 @@ exports.index = function(req, res){
     }).catch(function(e) {
         console.log(e);
     });*/
-   if(typeof(myMap.get("test")) =='undefined'){
 
-       console.log('myMap.get("test")undefined');
-   }
+       console.log(myMap.get("Uaa0637612b1059d6b2d584a2b5bd2889"));
+
 
 
     res.render( 'index', {
@@ -130,11 +129,11 @@ exports.webhook = function(req, res){
 
 bot.on('message', function (event) {
     var userName;
-    console.log(event.source.userId);
-    if( typeof(myMap[event.source.userId]) =='undefined'){
+    console.log("'"+event.source.userId+"'");
+    if( typeof(myMap[event.source.userId].trim()) =='undefined'){
         userName='陌生人';
     }else{
-        userName=myMap[event.source.userId];
+        userName=myMap[event.source.userId.trim()];
     }
 
 
