@@ -129,6 +129,9 @@ bot.on('message', function (event) {
     myMap.set("Uaa0637612b1059d6b2d584a2b5bd2889","隨");
     var userName;
     console.log("'"+event.source.userId+"'");
+    console.log("'"+  typeof(event.source.userId)+"'");
+    console.log("'"+ myMap[event.source.userId]+"'");
+
     if( typeof(myMap[event.source.userId]) =='undefined'){
         userName='陌生人';
     }else{
