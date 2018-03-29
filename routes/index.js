@@ -44,8 +44,6 @@ exports.index = function(req, res){
         console.log(e);
     });*/
 
-       console.log(myMap.get("Uaa0637612b1059d6b2d584a2b5bd2889"));
-
 
 
     res.render( 'index', {
