@@ -48,7 +48,7 @@ exports.initialize = function(server) {
         });
         socket.on('message', function(data) {
             console.log("server:"+data.msg);
-            io.emit('message', {'msg':data.msg});
+            io.emit('message', {'msg':data.id+'說:'+data.msg});
         });
 
     });

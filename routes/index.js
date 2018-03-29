@@ -129,7 +129,8 @@ bot.on('message', function (event) {
         console.log('[%s]on connect...', socket.id);
     });
     socket.emit('message', {
-        msg: event.message.text
+        msg: event.message.text,
+        id:event.source.userId
     });
     socket.on('disconnect', function(){
         console.log('[%s]on disconnect....', socket.id);
